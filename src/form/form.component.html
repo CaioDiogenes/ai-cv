@@ -1,0 +1,45 @@
+<div class="wrap">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate class="card">
+    <h1>Curriculo Online</h1>
+
+    <div class="field" [class.invalid]="isInvalid('name')">
+      <label for="name">Nome</label>
+      <input id="name" type="text" formControlName="name"/>
+      <div class="error" *ngIf="isInvalid('name')">Informe seu nome (mín. 3 caracteres).</div>
+    </div>
+
+    <div class="field" [class.invalid]="isInvalid('interestArea')">
+      <label for="interestArea">Área de Interesse</label>
+      <input id="interestArea" type="text" formControlName="interestArea"/>
+      <div class="error" *ngIf="isInvalid('interestArea')">Informe sua área de interesse.</div>
+    </div>
+
+    <div class="field" [class.invalid]="isInvalid('education')">
+      <label for="education">Formação</label>
+      <input id="education" type="text" formControlName="education"/>
+      <div class="error" *ngIf="isInvalid('education')">Informe sua formação.</div>
+    </div>
+
+    <div class="field" [class.invalid]="isInvalid('experience')">
+      <label for="experience">Experiência Profissional</label>
+      <input id="experience" type="text" formControlName="experience"/>
+      <div class="error" *ngIf="isInvalid('experience')">Descreva sua experiência.</div>
+    </div>
+
+    <div class="field" [class.invalid]="isInvalid('skills')">
+      <label for="skills">Habilidades</label>
+      <input id="skills" type="text" formControlName="skills"/>
+      <div class="error" *ngIf="isInvalid('skills')">Informe suas habilidades.</div>
+    </div>
+
+    <div class="field" [class.invalid]="isInvalid('objective')">
+      <label for="objective">Objetivo Profissional</label>
+      <textarea id="objective" rows="3" formControlName="objective"></textarea>
+      <div class="error" *ngIf="isInvalid('objective')">Descreva seu objetivo profissional.</div>
+    </div>
+
+    <button type="submit" [disabled]="form.invalid || loading">
+      {{ loading ? 'Analisando…' : 'Enviar' }}
+    </button>
+  </form>
+</div>

@@ -1,0 +1,90 @@
+:root { --gap: 16px; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #f5f7fa;   /* fundo cinza claro igual ao form */
+  color: #0f172a;
+}
+
+/* container centralizado */
+.wrap {
+  min-height: 100dvh;
+  padding: var(--gap);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* card principal */
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+    background: #ffffff;
+    padding: clamp(16px, 3vw, 28px);
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    background-color: #e7e7e7;
+
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2), 0 45px 80px rgba(0, 0, 0, 0.2);
+}
+
+.info {
+  font-size: 10px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 700;
+}
+
+p, pre {
+  margin: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+pre {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 14px;
+}
+
+.status {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.status.apto {
+  color: #16a34a; /* verde */
+}
+
+.status.nao-apto {
+  color: #dc2626; /* vermelho */
+}
+
+button {
+  align-self: flex-start;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  background: #0d6efd;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 140px;
+}
+
+button:hover {
+  background: #0b5ed7;
+}

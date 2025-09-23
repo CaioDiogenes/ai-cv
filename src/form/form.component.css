@@ -1,0 +1,222 @@
+:root{
+  --bg: #f5f7fa;
+  --text: #0f172a;
+  --muted: #475569;
+  --border: #e5e7eb;
+
+  --ring: rgba(13,110,253,.25);
+
+  --danger: #b91c1c;
+  --danger-border: #7f1d1d;
+
+  --card-fill: #e7e7e7;
+  --inner-card-fill: #f0f0f0;
+  --outer-shadow: 0 24px 80px rgba(0,0,0,.20), 0 45px 80px rgba(0,0,0,.20);
+  --inner-shadow: 0 10px 24px rgba(0,0,0,.08);
+}
+
+/* =========================
+   Reset & base
+========================= */
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background:
+    radial-gradient(1200px 800px at 10% -10%, #eef2ff 0%, transparent 60%),
+    radial-gradient(900px 600px at 100% 0%, #e2fbff 0%, transparent 60%),
+    var(--bg);
+  color: var(--text);
+}
+::placeholder{ color: #94a3b8; }
+
+/* =========================
+   Layout
+========================= */
+.wrap{
+  min-height: 100dvh;
+  padding: 24px;
+  display: grid;
+  place-items: center;
+}
+
+.card{
+  width: min(900px, 100%);
+  background: #e7e7e7;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: clamp(18px, 3.5vw, 32px);
+  box-shadow: var(--outer-shadow);
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr; /* mobile: 1 coluna */
+}
+
+/* Desktop: 2 colunas; só .panel fica lado a lado */
+@media (min-width: 768px){
+  .card{
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 24px;
+  }
+  /* elementos que NÃO são .panel ocupam a largura toda */
+  .card > :not(.panel){ grid-column: 1 / -1; }
+}
+
+/* Painéis (usados para Experiência e Formação) */
+.panel{ display: grid; gap: 12px; }
+
+/* =========================
+   Headings
+========================= */
+h1{
+  margin: 0 0 6px;
+  font-weight: 700;
+  font-size: clamp(22px, 2.4vw, 30px);
+  text-align: center;
+}
+h2{
+  margin: 8px 0 4px;
+  font-weight: 700;
+  font-size: clamp(16px, 1.8vw, 18px);
+  color: var(--muted);
+}
+
+/* =========================
+   Fields
+========================= */
+.field, fieldset.field{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 2px 0;
+}
+label, legend{
+  font-weight: 600;
+  font-size: 14px;
+  color: #111827;
+}
+
+/* Inputs unificados */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea{
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  font: inherit;
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+/* Foco acessível */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+select:focus,
+textarea:focus{
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+textarea{
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Estado inválido */
+.field.invalid input[type="text"],
+.field.invalid input[type="email"],
+.field.invalid input[type="tel"],
+.field.invalid select,
+.field.invalid textarea{
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239,68,68,.15);
+}
+.error{ color: #b42318; font-size: 12px; }
+
+/* Radios */
+.radio-group{ display: flex; flex-wrap: wrap; gap: 10px 14px; }
+.radio{ display: inline-flex; align-items: center; gap: 8px; }
+.radio input[type="radio"]{ accent-color: #0d6efd; }
+
+/* =========================
+   Buttons
+========================= */
+button[type="submit"]{
+  justify-self: end;
+  padding: 10px 18px;
+  border: 1px solid #0d6efd;
+  border-radius: 10px;
+  background: #0d6efd;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 170px;
+  transition: transform .06s ease, background .15s ease, border-color .15s ease;
+}
+button[type="submit"]:hover{ background: #0b5ed7;; border-color: #0b5ed7;; }
+button[type="submit"]:active{ transform: translateY(1px); }
+button[disabled]{ background: #a7c4ff; border-color: #a7c4ff; cursor: not-allowed; }
+
+.actions{ display: flex; gap: 10px; flex-wrap: wrap; }
+.actions.right{ justify-content: flex-end; }
+
+button.secondary{
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(2,6,23,.06);
+  transition: background .15s ease, transform .06s ease, box-shadow .15s ease;
+}
+button.secondary:hover{ background: #f8fafc; box-shadow: 0 4px 10px rgba(2,6,23,.10); }
+button.secondary:active{ transform: translateY(1px); }
+
+button.danger{
+  background: var(--danger);
+  border: 1px solid var(--danger-border);
+  color: #fff;
+}
+
+/* =========================
+   Cards internos
+========================= */
+.card-inline{
+  background: var(--inner-card-fill);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: var(--inner-shadow);
+  display: grid;
+  gap: 12px;
+  margin-top: 8px;
+}
+.card-inline .field{ margin: 0; }
+.card-inline input,
+.card-inline textarea{
+  background: #fff; /* campos brancos dentro do bloco cinza */
+}
+
+/* Pares lado a lado (Cargo/Empresa, Curso/Instituição) */
+.row-2{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 768px){
+  .row-2{ grid-template-columns: 1fr 1fr; }
+}
+
+/* Placeholders com quebra de linha visível */
+textarea::placeholder{ white-space: pre-line; }

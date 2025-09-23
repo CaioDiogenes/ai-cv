@@ -1,0 +1,16 @@
+<div class="wrap">
+  <div class="card">
+    <h1>Feedback</h1>
+
+    <p class="status" [ngClass]="decision?.apto ? 'apto' : 'nao-apto'">
+      Status: {{ decision?.apto ? 'APTO' : 'NÃO APTO' }}
+    </p>
+
+    <p><strong>Justificativa:</strong></p>
+    <pre>{{ decision?.justificativa }}</pre>
+
+    <button (click)="novo()">Nova análise</button>
+    <span class="info"> dados baseados na análise do modelo gemini-2.0</span>
+
+  </div>
+</div>
